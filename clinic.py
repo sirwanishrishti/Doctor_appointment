@@ -12,3 +12,186 @@ class clinic():
         self.name = name
         self.ph_no = ph_no
         self.appointment_no = appointment_no
+
+
+# doctors(used dictionaries)
+general_sur = {"doctor1": "08:30 to 09:30",
+               "doctor2": "12:30 to 13:30"}
+orthopedic = {"doctor1": "10:30 to 11:30",
+              "doctor2": "14:30 to 15:30"}
+cardiologist = {"doctor1": "09:30 to 10:30",
+                "doctor2": "11:30 to 12:30"}
+diagnosis = {"doctor1": "13:30 to 14:30",
+             "doctor2": "15:30 to 16:30"}
+
+i = 1
+# used while loop and conditional statements
+while i == 1:
+    reason = int(input(
+        "Reason for Consultation: \n1.New Appointment \n2.Follow-up \n3.Check Appointment Status \n4. End process \n(1, 2, 3, 4):"))
+
+    if reason == 1:
+        print("--New Appointment--")
+        date = input("Enter the date for appointment(DD:MM:YYYY) : ")
+        name = input("Enter your name: ")
+        p = 1
+        while p == 1:
+            ph_no = input("Enter your mobile number: ")
+            if len(ph_no) == 10:
+                p = 0
+            else:
+                print("Invalid number, Try again")
+        appointment_no = random.randint(1000, 9999)
+        display = print(
+            f"Your Appointment number is {appointment_no}\n Please save it for future references.")
+        n = int(input("Kindly describe the problem you are facing: \n1. General\n2. Orthopedic(Bone-related)\n3. Heart-related\n4. Other\n5. Request a Diagnosis\n "))
+
+        if n == 1:
+            slot = int(
+                input(f"Select the slot you would like: \n{general_sur}\n"))
+            if slot == 1:
+                time = [t for t in general_sur.values()]
+                doctor = [d for d in general_sur.keys()]
+                print(
+                    f"your appointment is booked with {doctor[0]} for {time[0]}")
+            elif slot == 2:
+                time = [t for t in general_sur.values()]
+                doctor = [d for d in general_sur.keys()]
+                print(
+                    f"your appointment is booked with {doctor[1]} for {time[1]}")
+
+        elif n == 2:
+            slot = int(
+                input(f"Select the slot you would like: \n{orthopedic}\n"))
+            if slot == 1:
+                time = [t for t in orthopedic.values()]
+                doctor = [d for d in orthopedic.keys()]
+                print(
+                    f"your appointment is booked with {doctor[0]} for {time[0]}")
+            elif slot == 2:
+                time = [t for t in orthopedic.values()]
+                doctor = [d for d in orthopedic.keys()]
+                print(
+                    f"your appointment is booked with {doctor[1]} for {time[1]}")
+
+        elif n == 3:
+            slot = int(
+                input(f"Select the slot you would like: \n{cardiologist}\n"))
+            if slot == 1:
+                time = [t for t in cardiologist.values()]
+                doctor = [d for d in cardiologist.keys()]
+                print(
+                    f"your appointment is booked with {doctor[0]} for {time[0]}")
+            elif slot == 2:
+                time = [t for t in cardiologist.values()]
+                doctor = [d for d in cardiologist.keys()]
+                print(
+                    f"your appointment is booked with {doctor[1]} for {time[1]}")
+
+        elif n == 4:
+            print("Please refer to the general surgeon or get a diagnosis")
+        elif n == 5:
+            slot = int(
+                input(f"Select the slot you would like: \n{diagnosis}\n"))
+            if slot == 1:
+                time = [t for t in diagnosis.values()]
+                doctor = [d for d in diagnosis.keys()]
+                print(
+                    f"your appointment is booked with {doctor[0]} for {time[0]}")
+            elif slot == 2:
+                time = [t for t in diagnosis.values()]
+                doctor = [d for d in diagnosis.keys()]
+                print(
+                    f"your appointment is booked with {doctor[1]} for {time[1]}")
+        else:
+            print("Invalid choice")
+
+    elif reason == 2:
+        print("--Followup--")
+        date = input("Enter the date for appointment(DD:MM:YYYY) : ")
+        app_no = int(input("Enter your appointment number: "))
+        l = 1
+        while l == 1:
+            if app_no == appointment_no:
+                print("You may proceed")
+                l = 0
+            elif app_no != appointment_no:
+                print("Appointment number unrecognised \n TRY AGAIN!!!")
+
+        n2 = int(input("Who would you to like to consult for the follow-up\n"
+                       "1. General Surgeon\n"
+                       "2. Orthopedic\n"
+                       "3. Cardiologist\n"
+                       "4. Diagnosis Follow-up\n"
+                       ))
+        if n2 == 1:
+            slot = int(
+                input(f"Select the slot you would like: \n{general_sur}\n"))
+            if slot == 1:
+                time = [t for t in general_sur.values()]
+                doctor = [d for d in general_sur.keys()]
+                f = 0
+                print(
+                    f"your follow-up appointment is booked with {doctor[f]} for {time[f]}")
+            elif slot == 2:
+                time = [t for t in general_sur.values()]
+                doctor = [d for d in general_sur.keys()]
+                f = 1
+                print(
+                    f"your follow-up appointment is booked with {doctor[f]} for {time[f]}")
+
+        elif n2 == 2:
+            slot = int(
+                input(f"Select the slot you would like: \n{orthopedic}\n"))
+            if slot == 1:
+                time = [t for t in orthopedic.values()]
+                doctor = [d for d in orthopedic.keys()]
+                print(
+                    f"your follow-up appointment is booked with {doctor[0]} for {time[0]}")
+            elif slot == 2:
+                time = [t for t in orthopedic.values()]
+                doctor = [d for d in orthopedic.keys()]
+                print(
+                    f"your follow-up appointment is booked with {doctor[1]} for {time[1]}")
+
+        elif n2 == 3:
+            slot = int(
+                input(f"Select the slot you would like: \n{cardiologist}\n"))
+            if slot == 1:
+                time = [t for t in cardiologist.values()]
+                doctor = [d for d in cardiologist.keys()]
+                print(
+                    f"your follow-up appointment is booked with {doctor[0]} for {time[0]}")
+            elif slot == 2:
+                time = [t for t in cardiologist.values()]
+                doctor = [d for d in cardiologist.keys()]
+                print(
+                    f"your follow-up appointment is booked with {doctor[1]} for {time[1]}")
+
+        elif n2 == 4:
+            slot = int(
+                input(f"Select the slot you would like: \n{diagnosis}\n"))
+            if slot == 1:
+                time = [t for t in diagnosis.values()]
+                doctor = [d for d in diagnosis.keys()]
+                print(
+                    f"your follow-up appointment is booked with {doctor[0]} for {time[0]}")
+            elif slot == 2:
+                time = [t for t in diagnosis.values()]
+                doctor = [d for d in diagnosis.keys()]
+                print(
+                    f"your follow-up appointment is booked with {doctor[1]} for {time[1]}")
+
+            else:
+                print("Invalid choice")
+
+    elif reason == 3:
+        app_no = int(input("Enter your appointment number: "))
+        if app_no == appointment_no:
+            print(f"Your appointment is booked for {date}")
+        else:
+            print("No appointments for this Appointment Number")
+    elif reason == 4:
+        i = 0
+    else:
+        print("Invalid option")
